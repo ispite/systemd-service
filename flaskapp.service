@@ -3,11 +3,11 @@ Description=Gunicorn instance to serve flaskapp
 After=network.target
 
 [Service]
-User=flask
+User=root
 Group=www-data
-WorkingDirectory=/home/flask/flaskapp
-Environment="PATH=/home/flask/flaskapp/flaskappenv/bin"
-ExecStart=/home/flask/flaskapp/flaskappenv/bin/gunicorn --workers 3 --bind unix:flaskapp.sock -m 007 wsgi:app
+WorkingDirectory=/root/projects/flask-shamaev/
+Environment="PATH=/root/projects/flask-shamaev/venv/bin"
+ExecStart=/root/projects/flask-shamaev/venv/bin/gunicorn --workers 3 --bind unix:flaskapp.sock -m 007 wsgi:app
 
 [Install]
 WantedBy=multi-user.target
