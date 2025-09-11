@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve peak Flask app
+After=network.target
+
+[Service]
+User=flask-user
+Group=www-data
+WorkingDirectory=/home/flask-user/flask-app-demo
+Environment="PATH=/home/flask-user/env/teton/bin"
+ExecStart=/home/flask-user/env/teton/bin/gunicorn --workers 3 --bind unix:peak.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
